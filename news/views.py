@@ -86,3 +86,21 @@ class WorldPageView(ListView):
     def get_queryset(self):
         news =NewsModel.objects.filter(status=NewsModel.Status.Published, category__name='Jahon')
         return news
+
+class FanTexnikaPageView(ListView):
+    model = NewsModel
+    template_name = 'news/fantexnika.html'
+    context_object_name = 'fantexnika'
+
+    def get_queryset(self):
+        news =NewsModel.objects.filter(status=NewsModel.Status.Published, category__name='Fan-Texnika')
+        return news
+
+class SportPageView(ListView):
+    model = NewsModel
+    template_name = 'news/sport.html'
+    context_object_name = 'sport_list'
+
+    def get_queryset(self):
+        news =NewsModel.objects.filter(status=NewsModel.Status.Published, category__name='Sport')
+        return news
