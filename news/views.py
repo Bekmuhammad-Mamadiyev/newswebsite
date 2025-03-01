@@ -1,6 +1,7 @@
 from django.http import HttpResponse
+from django.urls import reverse_lazy
 from django.utils.text import slugify
-from django.views.generic import ListView
+from django.views.generic import ListView, UpdateView,CreateView, DeleteView
 
 from . import forms
 from django.shortcuts import render, get_object_or_404
@@ -104,3 +105,21 @@ class SportPageView(ListView):
     def get_queryset(self):
         news =NewsModel.objects.filter(status=NewsModel.Status.Published, category__name='Sport')
         return news
+
+
+class NewsUpdateView(UpdateView):
+    model = NewsModel
+    fields = ('title', 'body','image','category','status')
+    template_name = 'crud/update.html'
+    success_url = reverse_lazy('home_page')
+
+class NewsDeleteView(DeleteView):
+    model = NewsModel
+    template_name = 'crud/delete.html'
+    success_url = reverse_lazy('home_page')
+
+
+class NewsCreateView(CreateView):
+    model = NewsModel
+    fields = ('title','slug', 'body','image','category','status')
+    template_name = 'crud/create.html'
