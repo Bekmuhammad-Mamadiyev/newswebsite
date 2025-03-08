@@ -43,7 +43,7 @@
                             <a class="nav-link text-body small" href="#">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body small" href="#">Login</a>
+                            <a class="nav-link text-body small" href="{% url 'login' %}">Login</a>
                         </li>
                     </ul>
                 </nav>
@@ -103,7 +103,7 @@
                     <a href="{% url 'news_local_page' %}" class="nav-item nav-link">Mahalliy</a>
                     <a href="{% url 'news_world_page'%}" class="nav-item nav-link">Jahon</a>
                     <a href="{% url 'news_sport_page'%}" class="nav-item nav-link">Sport</a>
-                    <a href="{% url 'contact_page' %}" class="nav-item nav-link">Biz bilan bog'lanish</lanish></a>
+                    <a href="{% url 'contact_page' %}" class="nav-item nav-link">Biz bilan bog'lanish</a>
                 </div>
                 <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
                     <input type="text" class="form-control border-0" placeholder="Keyword">
@@ -111,6 +111,15 @@
                         <button class="input-group-text bg-primary text-dark border-0 px-3"><i
                                 class="fa fa-search"></i></button>
                     </div>
+                </div>
+                <div>
+                    {% if request.user.is_authenticated %}
+                    <p><a href="{% url 'user_profile' %}">Profile</a> </p>
+                        {% else %}
+                        <p><a href="{% url 'login' %}">Kirish</a> </p>
+
+                    {% endif %}
+
                 </div>
             </div>
         </nav>

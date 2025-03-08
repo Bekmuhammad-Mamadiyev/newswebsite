@@ -1,0 +1,9 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% block content %}
+
+    <h3> Xush kelibsiz {{ user.username }}</h3>
+    <p>{{ user.username }}</p>
+    <a href="{% url 'logout' %}">Logout</a>
+
+{% endblock content %}

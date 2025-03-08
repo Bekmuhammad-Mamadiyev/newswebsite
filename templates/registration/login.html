@@ -1,0 +1,16 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% block content %}
+
+    <h2>Sahifaga kirish</h2>
+    <div style="color: #0b2e13; width: 200px; height: 200px">
+    <form method="post">{% csrf_token %}
+    {{ form.as_p }}
+        <button type="submit">Login</button>
+
+    </form>
+    <a href="{% url 'logout' %}">Logout</a>
+    </div>
+
+
+{% endblock content %}
